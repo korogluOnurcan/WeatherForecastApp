@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.onurcankoroglu.weatherforecastapp.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_searchLocationFragment"
+            app:destination="@id/searchLocationFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/searchLocationFragment"
+        android:name="com.onurcankoroglu.weatherforecastapp.ui.searchlocation.LocationSearchFragment"
+        android:label="@string/search_location_fragment_label"
+        tools:layout="@layout/fragment_location_search">
+
+        <action
+            android:id="@+id/action_searchLocationFragment_to_networkWarningFragment"
+            app:destination="@id/networkWarningFragment" />
+        <action
+            android:id="@+id/action_searchLocationFragment_to_locationWarningFragment"
+            app:destination="@id/locationWarningFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationInfoFragment"
+        android:name="com.onurcankoroglu.weatherforecastapp.ui.locationinfo.LocationInfoFragment"
+        android:label="@string/location_info_fragment_label"
+        tools:layout="@layout/fragment_location_info">
+        <action
+            android:id="@+id/action_locationInfoFragment_to_networkWarningFragment"
+            app:destination="@id/networkWarningFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nearbyCitiesFragment"
+        android:name="com.onurcankoroglu.weatherforecastapp.ui.nearbycities.NearbyCitiesFragment"
+        android:label="fragment_nearby_cities"
+        tools:layout="@layout/fragment_nearby_cities" >
+        <action
+            android:id="@+id/action_nearbyCitiesFragment_to_locationInfoFragment"
+            app:destination="@id/locationInfoFragment" />
+        <action
+            android:id="@+id/action_nearbyCitiesFragment_to_networkWarningFragment"
+            app:destination="@id/networkWarningFragment" />
+        <action
+            android:id="@+id/action_nearbyCitiesFragment_to_locationWarningFragment"
+            app:destination="@id/locationWarningFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/networkWarningFragment"
+        android:name="com.onurcankoroglu.weatherforecastapp.ui.warning.NetworkWarningFragment"
+        android:label="@string/fragment_network_warning" />
+    <fragment
+        android:id="@+id/locationWarningFragment"
+        android:name="com.onurcankoroglu.weatherforecastapp.ui.warning.LocationWarningFragment"
+        android:label="@string/fragment_location_warning" />
+
+    <fragment
+        android:id="@+id/appInfoFragment"
+        android:name="com.onurcankoroglu.weatherforecastapp.ui.appinfo.AppInfoFragment"
+        android:label="fragment_app_info"
+        tools:layout="@layout/fragment_app_info" />
+
+
+</navigation>

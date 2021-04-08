@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.appinfo.AppInfoFragment">
+
+        <TextView
+            android:id="@+id/fragmentAppInfo_tvHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/app_info"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/fragmentAppInfo_seperator"
+            android:layout_width="0dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="26dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentAppInfo_tvHeader" />
+
+        <ImageView
+            android:id="@+id/fragmentAppInfo_ivAppLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/fragmentAppInfo_seperator"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentAppInfo_seperator"
+            app:srcCompat="@drawable/ic_weather_forecast_app_logo_circle"
+            android:contentDescription="@string/app_info_iv_description" />
+
+        <TextView
+            android:id="@+id/fragmentAppInfo_tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/app_name"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/fragmentAppInfo_tvCreatedBy"
+            app:layout_constraintStart_toEndOf="@+id/fragmentAppInfo_ivAppLogo" />
+
+        <TextView
+            android:id="@+id/fragmentAppInfo_tvCreatedBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/created_by"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/fragmentAppInfo_ivAppLogo"
+            app:layout_constraintStart_toEndOf="@+id/fragmentAppInfo_ivAppLogo"
+            app:layout_constraintTop_toTopOf="@+id/fragmentAppInfo_ivAppLogo" />
+
+        <TextView
+            android:id="@+id/fragmentAppInfo_tvAppInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/app_info_for"
+            android:textColor="@color/orange"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toEndOf="@+id/fragmentAppInfo_ivAppLogo"
+            app:layout_constraintTop_toBottomOf="@+id/fragmentAppInfo_tvCreatedBy" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

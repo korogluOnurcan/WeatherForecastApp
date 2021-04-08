@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="mwLocationInfo"
+            type="com.onurcankoroglu.weatherforecastapp.data.model.LocationInfo" />
+
+        <variable
+            name="forecastSize"
+            type="Integer" />
+
+        <variable
+            name="mwWeather"
+            type="com.onurcankoroglu.weatherforecastapp.data.model.Weather" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ui.locationinfo.LocationInfoFragment">
+
+            <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+                android:id="@+id/fragmentLocationInfo_progressBar"
+                style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                android:layout_width="0dp"
+                android:layout_height="6dp"
+                android:indeterminate="true"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:mpb_progressStyle="horizontal"
+                app:mpb_useIntrinsicPadding="false" />
+
+            <View
+                android:id="@+id/fragmentLocationInfo_background1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/weather_info_backround"
+                app:layout_constraintBottom_toTopOf="@+id/fragmentLocationInfo_layoutFollowingDays1"
+                app:layout_constraintEnd_toStartOf="@+id/fragmentLocationInfo_background2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentLocationInfo_layoutWeather" />
+
+            <View
+                android:id="@+id/fragmentLocationInfo_background2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/weather_info_backround"
+                app:layout_constraintBottom_toTopOf="@+id/fragmentLocationInfo_layoutFollowingDays1"
+                app:layout_constraintEnd_toStartOf="@+id/fragmentLocationInfo_background3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/fragmentLocationInfo_background1"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentLocationInfo_layoutWeather" />
+
+            <View
+                android:id="@+id/fragmentLocationInfo_background3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/weather_info_backround"
+                app:layout_constraintBottom_toTopOf="@+id/fragmentLocationInfo_layoutFollowingDays1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/fragmentLocationInfo_background2"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentLocationInfo_layoutWeather" />
+
+            <include
+                android:id="@+id/fragmentLocationInfo_layoutWeather"
+                layout="@layout/view_weather"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:mwWeather="@{mwLocationInfo.consolidated_weather.get(0)}"
+                bind:parent="@{mwLocationInfo.parent.title}"
+                bind:title="@{mwLocationInfo.title}" />
+
+            <TextView
+                android:id="@+id/fragmentLocationInfo_tvLocalTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/time"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentLocationInfo_background1"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="@+id/fragmentLocationInfo_background1"
+                app:layout_constraintTop_toTopOf="@+id/fragmentLocationInfo_background1" />
+
+            <TextView
+                android:id="@+id/fragmentLocationInfo_tvLocalHour"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{mwLocationInfo.formattedTime()}"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentLocationInfo_tvLocalTime"
+                app:layout_constraintStart_toStartOf="@+id/fragmentLocationInfo_tvLocalTime"
+                app:layout_constraintTop_toBottomOf="@id/fragmentLocationInfo_tvLocalTime"
+                tools:text="8:45am" />
+
+            <TextView
+                android:id="@+id/fragmentLocationInfo_tvSunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/sunrise"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentLocationInfo_background2"
+                app:layout_constraintStart_toStartOf="@+id/fragmentLocationInfo_background2"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentLocationInfo_layoutWeather" />
+
+            <TextView
+                android:id="@+id/fragmentLocationInfo_tvSunriseHour"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{mwLocationInfo.formattedSunriseTime()}"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentLocationInfo_tvSunrise"
+                app:layout_constraintStart_toStartOf="@id/fragmentLocationInfo_tvSunrise"
+                app:layout_constraintTop_toBottomOf="@id/fragmentLocationInfo_tvSunrise"
+                tools:text="7:25am" />
+
+            <TextView
+                android:id="@+id/fragmentLocationInfo_tvSunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/sunset"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentLocationInfo_background3"
+                app:layout_constraintStart_toStartOf="@+id/fragmentLocationInfo_background3"
+                app:layout_constraintTop_toTopOf="@+id/fragmentLocationInfo_background3" />
+
+            <TextView
+                android:id="@+id/fragmentLocationInfo_tvSunsetHour"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{mwLocationInfo.formattedSunsetTime()}"
+                app:layout_constraintEnd_toEndOf="@+id/fragmentLocationInfo_background3"
+                app:layout_constraintStart_toStartOf="@+id/fragmentLocationInfo_background3"
+                app:layout_constraintTop_toBottomOf="@id/fragmentLocationInfo_tvSunset"
+                tools:text="7:30pm" />
+
+
+            <include
+                android:id="@+id/fragmentLocationInfo_layoutFollowingDays1"
+                layout="@layout/view_following_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragmentLocationInfo_tvSunriseHour"
+                bind:index="@{1}"
+                bind:mwWeather="@{mwLocationInfo.consolidated_weather.get(1)}" />
+
+            <include
+                android:id="@+id/fragmentLocationInfo_layoutFollowingDays2"
+                layout="@layout/view_following_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragmentLocationInfo_layoutFollowingDays1"
+                bind:index="@{2}"
+                bind:mwWeather="@{mwLocationInfo.consolidated_weather.get(2)}" />
+
+            <include
+                android:id="@+id/fragmentLocationInfo_layoutFollowingDays3"
+                layout="@layout/view_following_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragmentLocationInfo_layoutFollowingDays2"
+                bind:index="@{3}"
+                bind:mwWeather="@{mwLocationInfo.consolidated_weather.get(3)}" />
+
+            <include
+                android:id="@+id/fragmentLocationInfo_layoutFollowingDays4"
+                layout="@layout/view_following_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragmentLocationInfo_layoutFollowingDays3"
+                bind:index="@{4}"
+                bind:mwWeather="@{mwLocationInfo.consolidated_weather.get(4)}" />
+
+            <include
+                android:id="@+id/fragmentLocationInfo_layoutFollowingDays5"
+                layout="@layout/view_following_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="@{forecastSize>=5?View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragmentLocationInfo_layoutFollowingDays4"
+                bind:index="@{forecastSize>5?5:forecastSize-1}"
+                bind:mwWeather="@{mwLocationInfo.consolidated_weather.get(forecastSize>5?5:forecastSize-1)}" />
+
+            <View
+                android:id="@+id/fragmentLocationInfo_seperator3"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toTopOf="@+id/fragmentLocationInfo_layoutWeatherDetail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragmentLocationInfo_layoutFollowingDays5" />
+
+            <include
+                android:id="@+id/fragmentLocationInfo_layoutWeatherDetail"
+                layout="@layout/view_weather_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                bind:mwWeather="@{mwLocationInfo.consolidated_weather.get(0)}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

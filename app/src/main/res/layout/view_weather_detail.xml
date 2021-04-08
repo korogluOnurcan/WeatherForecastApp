@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="mwWeather"
+            type="com.onurcankoroglu.weatherforecastapp.data.model.Weather" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/viewWeatherDetail_tvWind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wind"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/viewWeatherDetail_tvWindValue"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{String.format(@string/wind_format_weather_detail, mwWeather.wind_direction_compass, (int)mwWeather.wind_speed)}"
+            app:layout_constraintStart_toStartOf="@id/viewWeatherDetail_tvWind"
+            app:layout_constraintTop_toBottomOf="@id/viewWeatherDetail_tvWind"
+            tools:text="s 9 mph" />
+
+        <TextView
+            android:id="@+id/viewWeatherDetail_tvHumidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/humidity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/viewWeatherDetail_tvHumidityValue"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{String.format(@string/humidity_format_weather_detail, mwWeather.humidity)}"
+            app:layout_constraintStart_toStartOf="@+id/viewWeatherDetail_tvHumidity"
+            app:layout_constraintTop_toBottomOf="@+id/viewWeatherDetail_tvHumidity"
+            tools:text="71%" />
+
+        <TextView
+            android:id="@+id/viewWeatherDetail_tvVisibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/visibility"
+            app:layout_constraintStart_toStartOf="@+id/viewWeatherDetail_tvWind"
+            app:layout_constraintTop_toBottomOf="@id/viewWeatherDetail_tvWindValue" />
+
+        <TextView
+            android:id="@+id/viewWeatherDetail_tvVisibilityValue"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{String.format(@string/visibility_format_weather_detail, mwWeather.visibility)}"
+            app:layout_constraintStart_toStartOf="@id/viewWeatherDetail_tvVisibility"
+            app:layout_constraintTop_toBottomOf="@id/viewWeatherDetail_tvVisibility"
+            tools:text="13.5 miles" />
+
+        <TextView
+            android:id="@+id/viewWeatherDetail_tvPressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/pressure"
+            app:layout_constraintStart_toStartOf="@+id/viewWeatherDetail_tvHumidity"
+            app:layout_constraintTop_toBottomOf="@+id/viewWeatherDetail_tvHumidityValue" />
+
+        <TextView
+            android:id="@+id/viewWeatherDetail_tvPressureValue"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@{String.format(@string/pressure_format_weather_detail, mwWeather.air_pressure)}"
+            app:layout_constraintStart_toStartOf="@+id/viewWeatherDetail_tvPressure"
+            app:layout_constraintTop_toBottomOf="@id/viewWeatherDetail_tvPressure"
+            tools:text="1080mb" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="title"
+            type="String" />
+        <variable
+            name="parent"
+            type="String" />
+
+        <variable
+            name="mwWeather"
+            type="com.onurcankoroglu.weatherforecastapp.data.model.Weather" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/viewWeather_tvCountryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{parent}"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Germany" />
+
+        <TextView
+            android:id="@+id/viewWeather_tvCityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{title}"
+            android:textColor="@color/colorPrimaryDark2"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewWeather_tvCountryName"
+            tools:text="Berlin" />
+
+        <ImageView
+            android:id="@+id/viewWeather_ivWeatherCondition"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/weather_state_iv_description"
+            app:imageUrl="@{mwWeather.imageUrl}"
+            app:layout_constraintEnd_toStartOf="@+id/viewWeather_tvTemp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewWeather_tvCityName" />
+
+        <TextView
+            android:id="@+id/viewWeather_tvTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/the_temp_weather_detail, (int)mwWeather.the_temp)}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="72sp"
+            app:layout_constraintBottom_toTopOf="@id/viewWeather_tvWeatherState"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/viewWeather_ivWeatherCondition"
+            app:layout_constraintTop_toTopOf="@+id/viewWeather_ivWeatherCondition"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="99C" />
+
+        <TextView
+            android:id="@+id/viewWeather_tvWeatherState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{mwWeather.weather_state_name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorPrimaryDark2"
+            app:layout_constraintBottom_toBottomOf="@id/viewWeather_ivWeatherCondition"
+            app:layout_constraintEnd_toEndOf="@+id/viewWeather_tvTemp"
+            app:layout_constraintStart_toStartOf="@+id/viewWeather_tvTemp"
+            app:layout_constraintTop_toBottomOf="@+id/viewWeather_tvTemp"
+            tools:text="Light rain" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

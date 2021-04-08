@@ -1,0 +1,54 @@
+<resources>
+    //App
+    <string name="app_name">Weather Forecast</string>
+
+    //Labels
+    <string name="search_location_fragment_label">Search Location Fragment</string>
+    <string name="location_info_fragment_label">Location Info Fragment</string>
+    <string name="past_location_info_fragment_label">Past Location Info Fragment</string>
+    <string name="fragment_network_warning">Network Warning Fragment</string>
+    <string name="fragment_location_warning">Location Warning Fragment</string>
+
+    //Weather Details
+    <string name="the_temp_weather_detail">%1$d°C</string>
+    <string name="min_temp_weather_detail">%1$d°</string>
+    <string name="wind_format_weather_detail">%1$s %2$d mph</string>
+    <string name="humidity_format_weather_detail">%1$d%%</string>
+    <string name="visibility_format_weather_detail">%1$.1f mi</string>
+    <string name="pressure_format_weather_detail">%1$.0fmb</string>
+    <string name="confidence_format_weather_detail">%1$d%%</string>
+    <string name="distance_format_location_detail">Distance: %s Metres</string>
+
+    //Weather Events
+    <string name="wind">WIND</string>
+    <string name="humidity">HUMIDITY</string>
+    <string name="visibility">VISIBILITY</string>
+    <string name="pressure">PRESSURE</string>
+
+    //Location Events
+    <string name="sunrise">SUNRISE</string>
+    <string name="sunset">SUNSET</string>
+    <string name="time">LOCAL TIME</string>
+
+    //Warning Messages
+    <string name="location_not_provided">Location not provided</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+
+    //Bottom navigation menu names
+    <string name="homepage">Homepage</string>
+    <string name="nearby_cities">Nearby Cities</string>
+    <string name="app_info">App Info</string>
+
+    //Image view descriptions
+    <string name="following_days_iv_description">Following days weather state image view.</string>
+    <string name="weather_state_iv_description">Weather state image view.</string>
+    <string name="app_info_iv_description">App logo image view.</string>
+
+    //Others
+    <string name="text_mark">Text mark</string>
+    <string name="about">About</string>
+    <string name="created_by">Created by Onurcan Koroglu</string>
+    <string name="app_info_for">for Appcent</string>
+
+
+</resources>
