@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.onurcankoroglu.weatherforecastapp.network.MetaWeatherService
 import com.onurcankoroglu.weatherforecastapp.data.model.LocationInfo
+import com.onurcankoroglu.weatherforecastapp.network.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,7 +37,7 @@ class LocationInfoViewModel() : ViewModel() {
             return
         }
         progressBar.postValue(true);
-        callLocationInfo = MetaWeatherService.instance.getLocationInfo(mwLocationID)
+        callLocationInfo = RetrofitBuilder.getService().getLocationInfo(mwLocationID)
         callLocationInfo?.enqueue(object : Callback<LocationInfo> {
             override fun onFailure(call: Call<LocationInfo>, t: Throwable) {
                 progressBar.postValue(false)

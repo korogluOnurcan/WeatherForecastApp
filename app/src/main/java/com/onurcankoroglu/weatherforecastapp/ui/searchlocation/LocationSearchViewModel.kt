@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.onurcankoroglu.weatherforecastapp.network.MetaWeatherService
 import com.onurcankoroglu.weatherforecastapp.data.model.Location
+import com.onurcankoroglu.weatherforecastapp.network.RetrofitBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +29,7 @@ class LocationSearchViewModel : ViewModel() {
 
     fun search(txt: String) {
         progressBar.postValue(true)
-        callSearchLocations = MetaWeatherService.instance.searchLocation(txt)
+        callSearchLocations = RetrofitBuilder.getService().searchLocation(txt)
         callSearchLocations?.enqueue(object : Callback<List<Location>> {
             override fun onFailure(call: Call<List<Location>>, throwable: Throwable) {
                 progressBar.postValue(false)
